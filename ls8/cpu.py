@@ -25,15 +25,15 @@ class CPU:
 
         # For now, we've just hardcoded a program:
 
-        program = [
-            # From print8.ls8
-            0b10000010,  # LDI R0,8
-            0b00000000,
-            0b00001000,
-            0b01000111,  # PRN R0
-            0b00000000,
-            0b00000001,  # HLT
-        ]
+        # program = [
+        #     # From print8.ls8
+        #     0b10000010,  # LDI R0,8
+        #     0b00000000,
+        #     0b00001000,
+        #     0b01000111,  # PRN R0
+        #     0b00000000,
+        #     0b00000001,  # HLT
+        # ]
 
         for instruction in program:
             self.ram[address] = instruction
@@ -80,6 +80,13 @@ class CPU:
         reg_address = self.ram_read(self.pc + 1)
         value = self.reg[reg_address]
         print(f'PRN -> {value}')
+
+    def ram_read(self, MAR):
+        return self.ram[MAR]
+
+    def ram_write(self):
+        self.ram[MAR] = MRD
+
 
     def run(self):
         """Run the CPU."""
